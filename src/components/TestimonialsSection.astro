@@ -1,0 +1,41 @@
+---
+const testimonials = [
+  {
+    quote: 'This is one of the cleanest, most powerful Spanish lifestyle domains I\'ve seen in years. Instant brand equity.',
+    author: 'Founder, Luxury Travel Group',
+    stars: 5,
+  },
+  {
+    quote: 'We acquired a similar phrase domain for our coastal real estate project. The brand recognition was immediate and powerful.',
+    author: 'CEO, Oceanfront Developments',
+    stars: 4.5,
+  },
+  {
+    quote: 'Domains like this don\'t come around often. It\'s short, memorable, and culturally perfect. A true premium asset.',
+    author: 'Domain Investor & Brand Strategist',
+    stars: 5,
+  },
+];
+---
+
+<section class="bg-slate-900 py-16 border-y border-slate-800">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <div class="text-gold-400 text-xs tracking-[3px] font-semibold">WHAT BUYERS &amp; BRAND LEADERS SAY</div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {testimonials.map((item) => (
+        <div class="bg-slate-950 border border-slate-700 rounded-3xl p-8">
+          <div class="flex gap-1 text-gold-400 mb-4" aria-label={`${item.stars} out of 5 stars`}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span class={i < Math.floor(item.stars) ? '' : i < item.stars ? 'opacity-50' : 'opacity-20'}>★</span>
+            ))}
+          </div>
+          <p class="italic text-white/90">"{item.quote}"</p>
+          <p class="mt-6 text-sm text-white/60">— {item.author}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+---
+import { ACQUISITION_MAILTO } from '../config/site';
+
+export interface Props {
+  image: string;
+}
+
+const { image } = Astro.props;
+---
+
+<section class="relative min-h-[100dvh] flex items-center pt-20 overflow-hidden">
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style={`background-image: url('${image}')`}
+    role="img"
+    aria-label="Tropical beach at golden hour"
+  >
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/60 to-slate-950/80"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#C5A46E10_0.8px,transparent_1px)] bg-[length:5px_5px]"></div>
+  </div>
+
+  <div class="relative max-w-5xl mx-auto px-6 text-center z-10 pt-12 pb-20">
+    <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 mb-8">
+      <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+      <span class="text-xs font-medium tracking-[2px] text-white/90">PREMIUM .COM &bull; AVAILABLE NOW</span>
+    </div>
+
+    <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-[92px] leading-[0.92] tracking-tighter heading-serif text-white mb-4">
+      LaPlayaEsVida<span class="text-gold-400">.</span>com
+    </h1>
+
+    <p class="max-w-2xl mx-auto text-2xl md:text-3xl text-white/90 font-light tracking-tight mb-4">
+      The Beach Is Life
+    </p>
+
+    <p class="max-w-lg mx-auto text-lg text-white/70 mb-10">
+      The rare, emotionally powerful Spanish domain that instantly owns the aspirational coastal lifestyle.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a
+        href={ACQUISITION_MAILTO}
+        class="group px-10 py-4 bg-white hover:bg-amber-50 text-slate-950 font-semibold text-lg rounded-3xl flex items-center justify-center gap-3 transition-all shadow-xl conversion-cta w-full sm:w-auto"
+      >
+        <span>Inquire to Acquire</span>
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+
+      <a
+        href="#value"
+        class="px-8 py-4 border border-white/40 hover:bg-white/5 text-white font-medium rounded-3xl flex items-center justify-center gap-2 transition-all w-full sm:w-auto"
+      >
+        Discover the Value
+      </a>
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-white/50">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" /></svg>
+          Global Spanish Reach
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          Escrow Protected
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

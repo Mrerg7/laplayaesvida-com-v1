@@ -1,0 +1,22 @@
+<section id="process" class="max-w-5xl mx-auto px-6 py-20">
+  <div class="text-center mb-14">
+    <div class="text-gold-400 text-xs tracking-[3px] font-semibold mb-2">SIMPLE &amp; SECURE</div>
+    <h2 class="text-4xl sm:text-5xl heading-serif tracking-tight text-white">How to Acquire LaPlayaEsVida.com</h2>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+    {[
+      { step: '1', title: 'Submit Your Inquiry', desc: 'Share your vision and interest. All inquiries are handled confidentially.' },
+      { step: '2', title: 'Private Discussion', desc: 'Receive detailed information, comparable sales data, and acquisition terms tailored to serious buyers.' },
+      { step: '3', title: 'Secure Transfer', desc: 'Fast, escrow-protected transfer via trusted platforms. Full ownership transferred cleanly and professionally.' },
+    ].map((item) => (
+      <div class="text-center">
+        <div class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center mb-5">
+          <span class="text-slate-950 font-bold text-3xl">{item.step}</span>
+        </div>
+        <h3 class="font-semibold text-xl mb-2 text-white">{item.title}</h3>
+        <p class="text-sm text-white/70">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>

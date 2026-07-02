@@ -1,0 +1,40 @@
+---
+const faqs = [
+  {
+    q: 'Is LaPlayaEsVida.com available for immediate purchase?',
+    a: 'Yes. The domain is currently available. Serious buyers can begin the acquisition process immediately through private inquiry.',
+  },
+  {
+    q: 'What makes this domain worth a premium price?',
+    a: 'It is a clean, exact Spanish phrase .com with powerful emotional resonance, massive global reach (636M+ Spanish speakers), and strong applicability across high-value industries. Comparable premium lifestyle domains consistently transact at significant valuations.',
+  },
+  {
+    q: 'How is the transfer handled?',
+    a: 'We use industry-standard escrow services (Escrow.com or equivalent) for secure, protected transfers. Full ownership and DNS control are transferred cleanly upon payment confirmation.',
+  },
+  {
+    q: 'Can I use financing or payment plans?',
+    a: 'For qualified buyers and larger acquisitions, structured payment options and financing discussions are available upon request during the private inquiry process.',
+  },
+];
+---
+
+<section class="max-w-4xl mx-auto px-6 pb-20">
+  <div class="text-center mb-10">
+    <div class="text-gold-400 text-xs tracking-[3px] font-semibold">FREQUENTLY ASKED QUESTIONS</div>
+  </div>
+
+  <div class="space-y-3">
+    {faqs.map((faq) => (
+      <details class="group border border-slate-700 rounded-2xl overflow-hidden bg-slate-950/50">
+        <summary class="flex justify-between items-center px-7 py-5 text-left cursor-pointer hover:bg-slate-900 transition-colors list-none font-medium text-white">
+          <span>{faq.q}</span>
+          <svg class="w-5 h-5 text-white/50 shrink-0 ml-4 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-7 pb-6 text-sm text-white/80">{faq.a}</div>
+      </details>
+    ))}
+  </div>
+</section>
