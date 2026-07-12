@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
-import { SITE, OG_IMAGE } from '../config/site';
+import { SITE, OG_IMAGE, PRODUCT_OFFER } from '../config/site';
+import { getAggregateRating, getProductReviews } from '../data/testimonials';
 
 export interface Props {
   title?: string;
@@ -54,11 +55,14 @@ const structuredData = {
         '@type': 'Brand',
         name: SITE.name,
       },
+      review: getProductReviews(),
+      aggregateRating: getAggregateRating(),
       offers: {
         '@type': 'Offer',
         url: canonicalURL,
         availability: 'https://schema.org/InStock',
-        priceCurrency: 'USD',
+        price: PRODUCT_OFFER.price,
+        priceCurrency: PRODUCT_OFFER.priceCurrency,
         seller: {
           '@type': 'Organization',
           name: 'Desert Rich',
@@ -77,6 +81,8 @@ const structuredData = {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+
+  <meta name="google-site-verification" content={SITE.googleSiteVerification} />
 
   <link rel="canonical" href={canonicalURL} />
   {noindex && <meta name="robots" content="noindex" />}

@@ -1,3 +1,13 @@
+---
+import { PRODUCT_OFFER } from '../config/site';
+
+const formattedPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: PRODUCT_OFFER.priceCurrency,
+  maximumFractionDigits: 0,
+}).format(PRODUCT_OFFER.price);
+---
+
 <section class="max-w-5xl mx-auto px-6 py-20 text-center">
   <div class="max-w-3xl mx-auto">
     <div class="text-gold-400 text-xs tracking-[3px] font-semibold mb-3">INVESTMENT PERSPECTIVE</div>
@@ -5,8 +15,12 @@
       A High-Value Acquisition in a Sea of Commodities
     </h2>
 
-    <p class="text-xl text-white/80 leading-relaxed mb-10">
+    <p class="text-xl text-white/80 leading-relaxed mb-6">
       Most premium domains today are either generic or forced. LaPlayaEsVida.com is different. It is an authentic, culturally powerful, and instantly ownable phrase that stands out in any category.
+    </p>
+
+    <p class="text-2xl sm:text-3xl font-semibold text-gold-400 mb-10">
+      Listed acquisition price: {formattedPrice}
     </p>
 
     <div class="flex flex-wrap justify-center gap-3 text-sm">

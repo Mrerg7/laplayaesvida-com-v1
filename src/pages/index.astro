@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+import { HERO_IMAGE } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
@@ -16,7 +17,7 @@ import FAQSection from '../components/FAQSection.astro';
 import Footer from '../components/Footer.astro';
 
 const siteData = await getEntry('site', 'site');
-const heroImage = siteData?.data?.heroImage ?? 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/65d846be-d4fc-4c40-4f3a-dce3dbb5e700/public';
+const heroImage = siteData?.data?.heroImage ?? HERO_IMAGE;
 ---
 
 <BaseLayout>
