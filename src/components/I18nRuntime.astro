@@ -1,0 +1,89 @@
+---
+import { translations } from '../i18n/translations';
+---
+
+<script is:inline define:vars={{ translations }}>
+  (function () {
+    var STORAGE_KEY = 'lp-lang';
+    var VIEWER_KEY = 'lp-viewer-n';
+
+    function getLang() {
+      try {
+        var stored = localStorage.getItem(STORAGE_KEY);
+        if (stored === 'es' || stored === 'en') return stored;
+      } catch (e) {}
+      return 'en';
+    }
+
+    function getViewerCount() {
+      try {
+        var existing = sessionStorage.getItem(VIEWER_KEY);
+        if (existing) return existing;
+        var n = String(4 + Math.floor(Math.random() * 5));
+        sessionStorage.setItem(VIEWER_KEY, n);
+        return n;
+      } catch (e) {
+        return '6';
+      }
+    }
+
+    function t(lang, key) {
+      var pack = translations[lang] || translations.en;
+      return pack[key] || translations.en[key] || key;
+    }
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (!key) return;
+        var value = t(lang, key);
+        if (key === 'hero.viewers') {
+          value = value.replace('{n}', getViewerCount());
+        }
+        if (el.hasAttribute('data-i18n-price')) {
+          var price = el.getAttribute('data-i18n-price') || '';
+          value = value + (price ? ' · ' + price : '');
+        }
+        el.textContent = value;
+      });
+
+      document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-aria');
+        if (key) el.setAttribute('aria-label', t(lang, key));
+      });
+
+      var label = document.getElementById('lang-toggle-label');
+      if (label) label.textContent = lang === 'es' ? 'EN' : 'ES';
+
+      var toggle = document.getElementById('lang-toggle');
+      if (toggle) {
+        toggle.setAttribute('aria-label', t(lang, 'lang.toggle'));
+        toggle.setAttribute('title', lang === 'es' ? 'English' : 'Español');
+      }
+
+      try {
+        localStorage.setItem(STORAGE_KEY, lang);
+      } catch (e) {}
+
+      document.dispatchEvent(new CustomEvent('lp:langchange', { detail: { lang: lang } }));
+    }
+
+    window.__lpApplyLang = applyLang;
+    window.__lpGetLang = getLang;
+
+    // Apply ASAP (before paint when possible via head script callers)
+    applyLang(getLang());
+
+    document.addEventListener('DOMContentLoaded', function () {
+      applyLang(getLang());
+      var btn = document.getElementById('lang-toggle');
+      btn &&
+        btn.addEventListener('click', function () {
+          applyLang(getLang() === 'es' ? 'en' : 'es');
+        });
+    });
+  })();
+</script>

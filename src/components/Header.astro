@@ -23,28 +23,45 @@ import {
     </a>
 
     <div class="hidden lg:flex items-center gap-7 text-sm text-[var(--text-muted)]">
-      <a href="#value" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">Why This Domain</a>
-      <a href="#market" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">Market</a>
-      <a href="#uses" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">Perfect For</a>
-      <a href="/guides/" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">Guides</a>
-      <a href="#process" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">How It Works</a>
+      <a href="#value" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center" data-i18n="nav.why">Why This Domain</a>
+      <a href="#market" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center" data-i18n="nav.market">Market</a>
+      <a href="#uses" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center" data-i18n="nav.uses">Perfect For</a>
+      <a href="/guides/" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center" data-i18n="nav.guides">Guides</a>
+      <a href="#process" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center" data-i18n="nav.process">How It Works</a>
     </div>
 
     <div class="flex items-center gap-2 sm:gap-3">
       <button
         type="button"
+        id="lang-toggle"
+        class="tap-target inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--border-strong)] px-3 text-sm font-semibold text-[var(--text)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+        aria-label="Switch language"
+        title="Español"
+      >
+        <svg class="w-4 h-4 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke-width="1.8" />
+          <path stroke-width="1.8" d="M3 12h18M12 3c2.5 2.8 3.8 5.8 3.8 9s-1.3 6.2-3.8 9c-2.5-2.8-3.8-5.8-3.8-9S9.5 5.8 12 3z" />
+        </svg>
+        <span id="lang-toggle-label">ES</span>
+      </button>
+
+      <button
+        type="button"
         id="theme-toggle"
         class="tap-target inline-flex items-center justify-center rounded-xl border border-[var(--border-strong)] px-3 text-sm text-[var(--text-muted)] hover:text-[var(--text)]"
+        data-i18n-aria="theme.toggle"
         aria-label="Toggle light and dark mode"
       >
-        <span class="theme-icon-dark hidden">Dark</span>
-        <span class="theme-icon-light">Light</span>
+        <span class="theme-icon-dark hidden" data-i18n="theme.dark">Dark</span>
+        <span class="theme-icon-light" data-i18n="theme.light">Light</span>
       </button>
 
       <a
         href={BUY_NOW_MAILTO}
         class="hidden sm:inline-flex btn-primary text-sm px-5"
         data-cta="nav-buy-now"
+        data-i18n="nav.buy"
+        data-i18n-price={formattedPrice}
       >
         Buy Now · {formattedPrice}
       </a>
@@ -55,6 +72,7 @@ import {
         class="lg:hidden tap-target inline-flex items-center justify-center rounded-xl border border-[var(--border-strong)] px-3"
         aria-expanded="false"
         aria-controls="mobile-nav"
+        data-i18n-aria="nav.open"
         aria-label="Open menu"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -66,16 +84,16 @@ import {
 
   <div id="mobile-nav" class="lg:hidden hidden border-t border-[var(--border-strong)] bg-[var(--bg-elevated)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1 text-[var(--text)]">
-      <a href="#value" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">Why This Domain</a>
-      <a href="#market" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">Market</a>
-      <a href="#uses" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">Perfect For</a>
-      <a href="/guides/" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">Guides</a>
-      <a href="#process" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">How It Works</a>
+      <a href="#value" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]" data-i18n="nav.why">Why This Domain</a>
+      <a href="#market" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]" data-i18n="nav.market">Market</a>
+      <a href="#uses" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]" data-i18n="nav.uses">Perfect For</a>
+      <a href="/guides/" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]" data-i18n="nav.guides">Guides</a>
+      <a href="#process" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]" data-i18n="nav.process">How It Works</a>
       <div class="grid gap-2 pt-3">
-        <a href={BUY_NOW_MAILTO} class="btn-primary" data-cta="mobile-buy-now">Buy Now · {formattedPrice}</a>
-        <a href={MAKE_OFFER_MAILTO} class="btn-accent" data-cta="mobile-make-offer">Make Offer</a>
-        <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)]" data-cta="mobile-contact">Contact Agent</a>
-        <a href={ACQUISITION_MAILTO} class="text-center text-sm text-[var(--text-muted)] py-2">General inquiry</a>
+        <a href={BUY_NOW_MAILTO} class="btn-primary" data-cta="mobile-buy-now" data-i18n="nav.buy" data-i18n-price={formattedPrice}>Buy Now · {formattedPrice}</a>
+        <a href={MAKE_OFFER_MAILTO} class="btn-accent" data-cta="mobile-make-offer" data-i18n="nav.offer">Make Offer</a>
+        <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)]" data-cta="mobile-contact" data-i18n="nav.contact">Contact Agent</a>
+        <a href={ACQUISITION_MAILTO} class="text-center text-sm text-[var(--text-muted)] py-2" data-i18n="nav.inquiry">General inquiry</a>
       </div>
     </div>
   </div>
@@ -113,7 +131,17 @@ import {
   mobileToggle?.addEventListener('click', () => {
     const open = mobileNav?.classList.toggle('hidden') === false;
     mobileToggle.setAttribute('aria-expanded', String(open));
-    mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    const lang = document.documentElement.getAttribute('data-lang') || 'en';
+    const aria =
+      lang === 'es'
+        ? open
+          ? 'Cerrar menú'
+          : 'Abrir menú'
+        : open
+          ? 'Close menu'
+          : 'Open menu';
+    mobileToggle.setAttribute('aria-label', aria);
+    mobileToggle.setAttribute('data-i18n-aria', open ? 'nav.close' : 'nav.open');
   });
 
   mobileNav?.querySelectorAll('a').forEach((link) => {

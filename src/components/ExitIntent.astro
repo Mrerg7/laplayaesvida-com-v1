@@ -18,20 +18,21 @@ import { SITE } from '../config/site';
       type="button"
       id="exit-intent-close"
       class="absolute right-3 top-3 tap-target inline-flex items-center justify-center rounded-xl text-[var(--text-muted)]"
+      data-i18n-aria="exit.close"
       aria-label="Close offer"
     >
       ✕
     </button>
-    <p class="section-kicker mb-3">Limited inquiry offer</p>
-    <h2 id="exit-intent-title" class="heading-serif text-3xl mb-3 text-[var(--text)]">
+    <p class="section-kicker mb-3" data-i18n="exit.kicker">Limited inquiry offer</p>
+    <h2 id="exit-intent-title" class="heading-serif text-3xl mb-3 text-[var(--text)]" data-i18n="exit.title">
       Before you go — claim a buyer briefing
     </h2>
-    <p class="text-[var(--text-muted)] mb-6 text-base">
-      Get comparable sales, transfer logistics, and a private acquisition checklist for LaPlayaEsVida.com. Mention code <strong>PLAYA5</strong> for a courtesy discount discussion on serious offers.
+    <p class="text-[var(--text-muted)] mb-6 text-base" data-i18n="exit.body">
+      Get comparable sales, transfer logistics, and a private acquisition checklist for LaPlayaEsVida.com. Mention code PLAYA5 for a courtesy discount discussion on serious offers.
     </p>
     <form id="exit-intent-form" class="grid gap-3">
       <label class="grid gap-1 text-sm">
-        <span class="text-[var(--text-muted)]">Work email</span>
+        <span class="text-[var(--text-muted)]" data-i18n="exit.email">Work email</span>
         <input
           type="email"
           name="email"
@@ -41,10 +42,10 @@ import { SITE } from '../config/site';
           placeholder="you@company.com"
         />
       </label>
-      <button type="submit" class="btn-accent w-full" data-cta="exit-intent-submit">
+      <button type="submit" class="btn-accent w-full" data-cta="exit-intent-submit" data-i18n="exit.submit">
         Send me the briefing
       </button>
-      <p class="text-xs text-[var(--text-faint)] text-center">
+      <p class="text-xs text-[var(--text-faint)] text-center" data-i18n="exit.note">
         Opens your email client to {SITE.email}. No spam list stored on this page.
       </p>
     </form>

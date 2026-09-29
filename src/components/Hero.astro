@@ -37,51 +37,37 @@ const webp = image === HERO_IMAGE ? HERO_IMAGE_WEBP : undefined;
   <div class="relative max-w-5xl mx-auto px-6 text-center z-10 pt-8 pb-20">
     <div class="fade-up inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-7">
       <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true"></span>
-      <span class="text-xs font-semibold tracking-[0.18em] text-white/90">PREMIUM .COM · AVAILABLE NOW · ONLY 1</span>
+      <span class="text-xs font-semibold tracking-[0.18em] text-white/90" data-i18n="hero.badge">PREMIUM .COM · AVAILABLE NOW · ONLY 1</span>
     </div>
 
     <h1 class="fade-up-delay text-5xl sm:text-7xl md:text-8xl lg:text-[92px] heading-serif text-white mb-4">
       LaPlayaEsVida<span class="text-gold-400">.</span>com
     </h1>
 
-    <p class="fade-up-delay max-w-2xl mx-auto text-2xl md:text-3xl text-white/92 font-light tracking-tight mb-3">
+    <p class="fade-up-delay max-w-2xl mx-auto text-2xl md:text-3xl text-white/92 font-light tracking-tight mb-3" data-i18n="hero.tagline">
       The Beach Is Life
     </p>
 
-    <p class="fade-up-delay-2 max-w-xl mx-auto text-base sm:text-lg text-white/75 mb-6">
+    <p class="fade-up-delay-2 max-w-xl mx-auto text-base sm:text-lg text-white/75 mb-6" data-i18n="hero.sub">
       Own the rare Spanish phrase .com that instantly brands coastal lifestyle across 636M+ speakers.
     </p>
 
     <div class="fade-up-delay-2 mb-8 flex flex-col items-center gap-2">
-      <p class="text-white/70 text-sm tracking-wide uppercase">Listed acquisition price</p>
+      <p class="text-white/70 text-sm tracking-wide uppercase" data-i18n="hero.priceLabel">Listed acquisition price</p>
       <p class="text-4xl sm:text-5xl font-semibold text-white heading-serif">{formattedPrice}</p>
-      <p class="text-sm text-emerald-300/90" id="viewer-count" aria-live="polite">Escrow-protected · SSL secured transfer</p>
+      <p class="text-sm text-emerald-300/90" id="viewer-count" aria-live="polite" data-i18n="hero.viewers">Escrow-protected · SSL secured transfer</p>
     </div>
 
     <div class="fade-up-delay-2 flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center">
-      <a href={BUY_NOW_MAILTO} class="btn-primary text-lg px-8" data-cta="hero-buy-now">
-        Buy Now
-      </a>
-      <a href={MAKE_OFFER_MAILTO} class="btn-secondary text-lg px-8" data-cta="hero-make-offer">
-        Make Offer
-      </a>
-      <a href={CONTACT_AGENT_MAILTO} class="btn-secondary text-lg px-8" data-cta="hero-contact-agent">
-        Contact Agent
-      </a>
+      <a href={BUY_NOW_MAILTO} class="btn-primary text-lg px-8" data-cta="hero-buy-now" data-i18n="hero.buy">Buy Now</a>
+      <a href={MAKE_OFFER_MAILTO} class="btn-secondary text-lg px-8" data-cta="hero-make-offer" data-i18n="hero.offer">Make Offer</a>
+      <a href={CONTACT_AGENT_MAILTO} class="btn-secondary text-lg px-8" data-cta="hero-contact-agent" data-i18n="hero.contact">Contact Agent</a>
     </div>
 
     <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs sm:text-sm text-white/55">
-      <span>Escrow.com ready</span>
-      <span>HTTPS / SSL secured</span>
-      <span>24h response guarantee</span>
+      <span data-i18n="hero.escrow">Escrow.com ready</span>
+      <span data-i18n="hero.ssl">HTTPS / SSL secured</span>
+      <span data-i18n="hero.response">24h response guarantee</span>
     </div>
   </div>
 </section>
-
-<script>
-  const el = document.getElementById('viewer-count');
-  if (el) {
-    const base = 4 + Math.floor(Math.random() * 5);
-    el.textContent = `${base} people viewing this premium domain · Escrow-protected`;
-  }
-</script>

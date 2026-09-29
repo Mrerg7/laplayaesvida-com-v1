@@ -17,23 +17,23 @@ const disclaimerDate = 'September 2026';
 
       <div class="relative z-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
         <div>
-          <p class="section-kicker mb-4">Domain available for acquisition</p>
-          <h2 class="heading-serif text-3xl sm:text-4xl tracking-tight mb-4 text-[var(--text)]">
+          <p class="section-kicker mb-4" data-i18n="footer.kicker">Domain available for acquisition</p>
+          <h2 class="heading-serif text-3xl sm:text-4xl tracking-tight mb-4 text-[var(--text)]" data-i18n="footer.title">
             laplayaesvida.com — a culturally defining digital asset
           </h2>
-          <p class="text-[var(--text-muted)] max-w-xl leading-relaxed mb-4">
+          <p class="text-[var(--text-muted)] max-w-xl leading-relaxed mb-4" data-i18n="footer.body">
             “The Beach Is Life” in its most ownable form — a rare exact-phrase .com with instant emotional resonance across 636M+ Spanish speakers and global lifestyle markets.
           </p>
-          <p class="text-[var(--accent)] font-semibold text-xl mb-2">{formattedPrice} · In stock</p>
+          <p class="text-[var(--accent)] font-semibold text-xl mb-2">{formattedPrice} · <span data-i18n="footer.stock">In stock</span></p>
           <div class="flex flex-wrap gap-3 text-sm">
-            <a href="/guides/domain-valuation/" class="underline underline-offset-4 text-[var(--text-muted)] hover:text-[var(--accent)]">Domain valuation guide</a>
-            <a href="/guides/beach-lifestyle-market/" class="underline underline-offset-4 text-[var(--text-muted)] hover:text-[var(--accent)]">Market trends</a>
-            <a href="/guides/success-stories/" class="underline underline-offset-4 text-[var(--text-muted)] hover:text-[var(--accent)]">Success stories</a>
+            <a href="/guides/domain-valuation/" class="underline underline-offset-4 text-[var(--text-muted)] hover:text-[var(--accent)]" data-i18n="footer.valuation">Domain valuation guide</a>
+            <a href="/guides/beach-lifestyle-market/" class="underline underline-offset-4 text-[var(--text-muted)] hover:text-[var(--accent)]" data-i18n="footer.trends">Market trends</a>
+            <a href="/guides/success-stories/" class="underline underline-offset-4 text-[var(--text-muted)] hover:text-[var(--accent)]" data-i18n="footer.stories">Success stories</a>
           </div>
         </div>
 
         <div class="rounded-2xl p-6 sm:p-8 border border-[var(--border-strong)] bg-[var(--bg)]/90 backdrop-blur-xl">
-          <p class="text-xs uppercase tracking-[2px] text-[var(--text-faint)] font-semibold mb-2">Acquisition contact</p>
+          <p class="text-xs uppercase tracking-[2px] text-[var(--text-faint)] font-semibold mb-2" data-i18n="footer.contact">Acquisition contact</p>
           <a
             href={`mailto:${SITE.email}`}
             class="block text-2xl sm:text-3xl font-serif text-[var(--text)] hover:text-[var(--accent)] transition-colors break-all"
@@ -41,11 +41,11 @@ const disclaimerDate = 'September 2026';
             {SITE.email}
           </a>
           <div class="mt-6 grid gap-2">
-            <a href={BUY_NOW_MAILTO} class="btn-primary w-full" data-cta="footer-buy-now">Buy Now</a>
-            <a href={MAKE_OFFER_MAILTO} class="btn-accent w-full" data-cta="footer-make-offer">Make Offer</a>
-            <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)]" data-cta="footer-contact">Contact Agent</a>
+            <a href={BUY_NOW_MAILTO} class="btn-primary w-full" data-cta="footer-buy-now" data-i18n="hero.buy">Buy Now</a>
+            <a href={MAKE_OFFER_MAILTO} class="btn-accent w-full" data-cta="footer-make-offer" data-i18n="hero.offer">Make Offer</a>
+            <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)]" data-cta="footer-contact" data-i18n="hero.contact">Contact Agent</a>
           </div>
-          <p class="mt-4 text-[11px] text-[var(--text-faint)] text-center tracking-wide">
+          <p class="mt-4 text-[11px] text-[var(--text-faint)] text-center tracking-wide" data-i18n="footer.response">
             Confidential inquiries · Response within 24 hours
           </p>
         </div>

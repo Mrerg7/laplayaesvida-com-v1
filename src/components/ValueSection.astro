@@ -1,28 +1,34 @@
 <section id="value" class="bg-[var(--bg-soft)] py-16 border-y border-[var(--border-strong)]">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-14">
-      <div class="section-kicker">Why this domain converts</div>
-      <h2 class="text-4xl sm:text-5xl heading-serif tracking-tight mt-3 text-[var(--text)]">A premium asset built for brand impact</h2>
+      <div class="section-kicker" data-i18n="value.kicker">Why this domain converts</div>
+      <h2 class="text-4xl sm:text-5xl heading-serif tracking-tight mt-3 text-[var(--text)]" data-i18n="value.title">A premium asset built for brand impact</h2>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
       {[
         {
+          titleKey: 'value.reach.title',
+          bodyKey: 'value.reach.body',
           title: 'Massive global reach',
           body: 'Spanish is spoken by over 636 million people worldwide. This domain speaks directly to Latin America, Spain, and the influential U.S. Hispanic market.',
         },
         {
+          titleKey: 'value.emotion.title',
+          bodyKey: 'value.emotion.body',
           title: 'Instant emotional connection',
           body: 'No explanation needed. “The Beach Is Life” instantly evokes paradise, relaxation, success, and the aspirational coastal lifestyle that millions dream about.',
         },
         {
+          titleKey: 'value.scarce.title',
+          bodyKey: 'value.scarce.body',
           title: 'True scarcity & memorability',
           body: 'Clean, short, flowing, and hyphen-free. Easy to pronounce in both Spanish and English. A rare exact-phrase .com that feels premium and ownable from day one.',
         },
       ].map((item) => (
         <div class="surface-card rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-1">
-          <h3 class="text-2xl font-semibold tracking-tight mb-3 text-[var(--text)]">{item.title}</h3>
-          <p class="text-[var(--text-muted)] leading-relaxed text-base">{item.body}</p>
+          <h3 class="text-2xl font-semibold tracking-tight mb-3 text-[var(--text)]" data-i18n={item.titleKey}>{item.title}</h3>
+          <p class="text-[var(--text-muted)] leading-relaxed text-base" data-i18n={item.bodyKey}>{item.body}</p>
         </div>
       ))}
     </div>

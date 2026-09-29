@@ -9,24 +9,24 @@ import {
 
 <section class="max-w-5xl mx-auto px-6 py-20 text-center" id="investment">
   <div class="max-w-3xl mx-auto">
-    <div class="section-kicker mb-3">Investment perspective</div>
-    <h2 class="text-4xl sm:text-5xl md:text-6xl heading-serif tracking-tighter mb-6 text-[var(--text)]">
+    <div class="section-kicker mb-3" data-i18n="investment.kicker">Investment perspective</div>
+    <h2 class="text-4xl sm:text-5xl md:text-6xl heading-serif tracking-tighter mb-6 text-[var(--text)]" data-i18n="investment.title">
       A high-value acquisition in a sea of commodities
     </h2>
 
-    <p class="text-xl text-[var(--text-muted)] leading-relaxed mb-6">
+    <p class="text-xl text-[var(--text-muted)] leading-relaxed mb-6" data-i18n="investment.body">
       Most premium domains today are either generic or forced. LaPlayaEsVida.com is different. It is an authentic, culturally powerful, and instantly ownable phrase that stands out in any category.
     </p>
 
     <p class="text-2xl sm:text-3xl font-semibold text-[var(--accent)] mb-4">
-      Listed acquisition price: {formattedPrice}
+      <span data-i18n="investment.price">Listed acquisition price:</span> {formattedPrice}
     </p>
-    <p class="text-sm text-[var(--text-faint)] mb-8">One-of-one exact-phrase .com · Price tier: Buy Now / Make Offer / Contact Agent</p>
+    <p class="text-sm text-[var(--text-faint)] mb-8" data-i18n="investment.tier">One-of-one exact-phrase .com · Price tier: Buy Now / Make Offer / Contact Agent</p>
 
     <div class="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-      <a href={BUY_NOW_MAILTO} class="btn-primary" data-cta="investment-buy-now">Buy Now</a>
-      <a href={MAKE_OFFER_MAILTO} class="btn-accent" data-cta="investment-make-offer">Make Offer</a>
-      <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)] px-6" data-cta="investment-contact">Contact Agent</a>
+      <a href={BUY_NOW_MAILTO} class="btn-primary" data-cta="investment-buy-now" data-i18n="hero.buy">Buy Now</a>
+      <a href={MAKE_OFFER_MAILTO} class="btn-accent" data-cta="investment-make-offer" data-i18n="hero.offer">Make Offer</a>
+      <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)] px-6" data-cta="investment-contact" data-i18n="hero.contact">Contact Agent</a>
     </div>
 
     <div class="flex flex-wrap justify-center gap-3 text-sm">

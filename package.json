@@ -1,7 +1,7 @@
 {
   "name": "laplayaesvida-com",
   "type": "module",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "scripts": {
     "dev": "astro dev --host --port 43123",

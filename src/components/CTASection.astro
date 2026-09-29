@@ -8,19 +8,19 @@ import {
 
 <section class="bg-[var(--bg-soft)] border-t border-[var(--border-strong)] py-20">
   <div class="max-w-3xl mx-auto px-6 text-center">
-    <h2 class="text-4xl sm:text-5xl heading-serif tracking-tighter mb-4 text-[var(--text)]">
-      Ready to own<br />The Beach Is Life?
+    <h2 class="text-4xl sm:text-5xl heading-serif tracking-tighter mb-4 text-[var(--text)]" data-i18n="cta.title">
+      Ready to own The Beach Is Life?
     </h2>
-    <p class="text-[var(--text-muted)] mb-8 text-base sm:text-lg">
+    <p class="text-[var(--text-muted)] mb-8 text-base sm:text-lg" data-i18n="cta.body">
       This premium domain is available for serious acquisition. Choose Buy Now at list price, Make Offer, or Contact Agent for a private discussion.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <a href={BUY_NOW_MAILTO} class="btn-primary text-lg px-10" data-cta="cta-buy-now">Buy Now</a>
-      <a href={MAKE_OFFER_MAILTO} class="btn-accent text-lg px-10" data-cta="cta-make-offer">Make Offer</a>
-      <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)] px-8 text-lg" data-cta="cta-contact">Contact Agent</a>
+      <a href={BUY_NOW_MAILTO} class="btn-primary text-lg px-10" data-cta="cta-buy-now" data-i18n="hero.buy">Buy Now</a>
+      <a href={MAKE_OFFER_MAILTO} class="btn-accent text-lg px-10" data-cta="cta-make-offer" data-i18n="hero.offer">Make Offer</a>
+      <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)] px-8 text-lg" data-cta="cta-contact" data-i18n="hero.contact">Contact Agent</a>
     </div>
 
-    <p class="text-xs text-[var(--text-faint)] mt-6">Confidential · Escrow Protected · Premium Acquisition</p>
+    <p class="text-xs text-[var(--text-faint)] mt-6" data-i18n="cta.note">Confidential · Escrow Protected · Premium Acquisition</p>
   </div>
 </section>

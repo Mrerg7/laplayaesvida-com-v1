@@ -1,21 +1,21 @@
 <section id="process" class="max-w-5xl mx-auto px-6 py-20">
   <div class="text-center mb-14">
-    <div class="section-kicker mb-2">Simple &amp; secure</div>
-    <h2 class="text-4xl sm:text-5xl heading-serif tracking-tight text-[var(--text)]">How to acquire LaPlayaEsVida.com</h2>
+    <div class="section-kicker mb-2" data-i18n="process.kicker">Simple &amp; secure</div>
+    <h2 class="text-4xl sm:text-5xl heading-serif tracking-tight text-[var(--text)]" data-i18n="process.title">How to acquire LaPlayaEsVida.com</h2>
   </div>
 
   <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
     {[
-      { step: '1', title: 'Choose your path', desc: 'Buy Now at list price, Make Offer, or Contact Agent. All inquiries are handled confidentially.' },
-      { step: '2', title: 'Private discussion', desc: 'Receive comparable sales data, transfer logistics, and acquisition terms tailored to serious buyers.' },
-      { step: '3', title: 'Secure transfer', desc: 'Fast, escrow-protected transfer via Escrow.com or equivalent. Full ownership transferred cleanly.' },
+      { step: '1', titleKey: 'process.1.title', bodyKey: 'process.1.body', title: 'Choose your path', desc: 'Buy Now at list price, Make Offer, or Contact Agent. All inquiries are handled confidentially.' },
+      { step: '2', titleKey: 'process.2.title', bodyKey: 'process.2.body', title: 'Private discussion', desc: 'Receive comparable sales data, transfer logistics, and acquisition terms tailored to serious buyers.' },
+      { step: '3', titleKey: 'process.3.title', bodyKey: 'process.3.body', title: 'Secure transfer', desc: 'Fast, escrow-protected transfer via Escrow.com or equivalent. Full ownership transferred cleanly.' },
     ].map((item) => (
       <div class="text-center">
         <div class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-300 to-yellow-600 flex items-center justify-center mb-5">
           <span class="text-slate-950 font-bold text-3xl">{item.step}</span>
         </div>
-        <h3 class="font-semibold text-xl mb-2 text-[var(--text)]">{item.title}</h3>
-        <p class="text-base text-[var(--text-muted)]">{item.desc}</p>
+        <h3 class="font-semibold text-xl mb-2 text-[var(--text)]" data-i18n={item.titleKey}>{item.title}</h3>
+        <p class="text-base text-[var(--text-muted)]" data-i18n={item.bodyKey}>{item.desc}</p>
       </div>
     ))}
   </div>

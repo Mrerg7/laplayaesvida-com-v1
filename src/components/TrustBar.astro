@@ -2,17 +2,17 @@
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 text-sm">
       {[
-        'Escrow.com protected',
-        'HTTPS / SSL secured',
-        'Exact Spanish phrase match',
-        'Hyphen-free & easy to spell',
-        'Transaction guarantee via escrow',
-      ].map((item) => (
+        ['trust.escrow', 'Escrow.com protected'],
+        ['trust.ssl', 'HTTPS / SSL secured'],
+        ['trust.phrase', 'Exact Spanish phrase match'],
+        ['trust.spell', 'Hyphen-free & easy to spell'],
+        ['trust.guarantee', 'Transaction guarantee via escrow'],
+      ].map(([key, label]) => (
         <div class="flex items-center gap-3 text-[var(--text-muted)]">
           <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span class="font-medium">{item}</span>
+          <span class="font-medium" data-i18n={key}>{label}</span>
         </div>
       ))}
     </div>

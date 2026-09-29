@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1] — 2026-09-29
+
+### FEAT: Spanish language toggle
+
+- Added ES/EN translate button in the top bar (globe + label)
+- Client-side Spanish translations for hero, nav, CTAs, trust, value, market, process, footer, and exit-intent
+- Language preference persisted in `localStorage` (`lp-lang`)
+
 ## [1.1.0] — 2026-09-29
 
 ### FEAT: Optimization improvements
