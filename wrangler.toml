@@ -1,9 +1,10 @@
 name = "laplayaesvida-com-v1"
 main = "worker.js"
-compatibility_date = "2026-06-01"
-workers_dev = false
+compatibility_date = "2026-09-29"
+workers_dev = true
 preview_urls = false
 
+# Custom domains (Cloudflare free plan / Workers custom domains)
 [[routes]]
 pattern = "laplayaesvida.com"
 custom_domain = true
@@ -14,6 +15,13 @@ custom_domain = true
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "404-page"
+html_handling = "auto-trailing-slash"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
 
 [vars]
 SITE_URL = "https://laplayaesvida.com"

@@ -1,0 +1,95 @@
+---
+/**
+ * Exit-intent / delayed capture for acquisition leads.
+ * Stores locally only; opens mailto with discount inquiry.
+ */
+import { SITE } from '../config/site';
+---
+
+<div
+  id="exit-intent"
+  class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="exit-intent-title"
+>
+  <div class="surface-card relative w-full max-w-md rounded-3xl p-6 sm:p-8">
+    <button
+      type="button"
+      id="exit-intent-close"
+      class="absolute right-3 top-3 tap-target inline-flex items-center justify-center rounded-xl text-[var(--text-muted)]"
+      aria-label="Close offer"
+    >
+      ✕
+    </button>
+    <p class="section-kicker mb-3">Limited inquiry offer</p>
+    <h2 id="exit-intent-title" class="heading-serif text-3xl mb-3 text-[var(--text)]">
+      Before you go — claim a buyer briefing
+    </h2>
+    <p class="text-[var(--text-muted)] mb-6 text-base">
+      Get comparable sales, transfer logistics, and a private acquisition checklist for LaPlayaEsVida.com. Mention code <strong>PLAYA5</strong> for a courtesy discount discussion on serious offers.
+    </p>
+    <form id="exit-intent-form" class="grid gap-3">
+      <label class="grid gap-1 text-sm">
+        <span class="text-[var(--text-muted)]">Work email</span>
+        <input
+          type="email"
+          name="email"
+          required
+          autocomplete="email"
+          class="tap-target rounded-xl border border-[var(--border-strong)] bg-[var(--bg)] px-4 text-[var(--text)]"
+          placeholder="you@company.com"
+        />
+      </label>
+      <button type="submit" class="btn-accent w-full" data-cta="exit-intent-submit">
+        Send me the briefing
+      </button>
+      <p class="text-xs text-[var(--text-faint)] text-center">
+        Opens your email client to {SITE.email}. No spam list stored on this page.
+      </p>
+    </form>
+  </div>
+</div>
+
+<script>
+  const KEY = 'lp-exit-shown';
+  const dialog = document.getElementById('exit-intent');
+  const closeBtn = document.getElementById('exit-intent-close');
+  const form = document.getElementById('exit-intent-form') as HTMLFormElement | null;
+
+  function show() {
+    if (!dialog || sessionStorage.getItem(KEY)) return;
+    dialog.classList.remove('hidden');
+    dialog.classList.add('flex');
+    sessionStorage.setItem(KEY, '1');
+  }
+
+  function hide() {
+    dialog?.classList.add('hidden');
+    dialog?.classList.remove('flex');
+  }
+
+  document.addEventListener('mouseout', (event) => {
+    if (event.clientY <= 0) show();
+  });
+
+  window.setTimeout(show, 45000);
+
+  closeBtn?.addEventListener('click', hide);
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) hide();
+  });
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const email = String(data.get('email') || '').trim();
+    if (!email) return;
+    const subject = encodeURIComponent('Buyer briefing request — LaPlayaEsVida.com (PLAYA5)');
+    const body = encodeURIComponent(
+      `Hello,\n\nPlease send the acquisition briefing for LaPlayaEsVida.com.\n\nMy email: ${email}\nOffer code: PLAYA5\n\nThank you.`,
+    );
+    window.location.href = `mailto:sales@desertrich.com?subject=${subject}&body=${body}`;
+    hide();
+  });
+</script>

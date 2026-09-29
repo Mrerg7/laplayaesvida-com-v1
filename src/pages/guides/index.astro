@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const guides = [
+  {
+    href: '/guides/domain-valuation/',
+    title: 'Premium domain valuation guide',
+    desc: 'How investors price exact-phrase .com domains, comps, and brand equity.',
+  },
+  {
+    href: '/guides/beach-lifestyle-market/',
+    title: 'Beach lifestyle market trends',
+    desc: 'Tourism, real estate, and Spanish-language demand driving coastal brands.',
+  },
+  {
+    href: '/guides/success-stories/',
+    title: 'Domain success stories',
+    desc: 'Case studies of lifestyle domains that became category-defining brands.',
+  },
+];
+---
+
+<BaseLayout
+  title="Domain Guides | Premium Domain for Sale | Desert Rich"
+  description="Practical guides on premium domain valuation, beach lifestyle market trends, and domain branding success stories — written for buyers of LaPlayaEsVida.com."
+>
+  <Header />
+  <main id="main" class="pt-28 pb-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="section-kicker mb-3">Content hub</p>
+      <h1 class="heading-serif text-5xl sm:text-6xl text-[var(--text)] mb-4">Domain investment guides</h1>
+      <p class="text-lg text-[var(--text-muted)] mb-12 max-w-2xl">
+        Weekly insights for buyers evaluating premium Spanish and lifestyle domains — starting with LaPlayaEsVida.com.
+      </p>
+      <div class="grid gap-4">
+        {guides.map((guide) => (
+          <a href={guide.href} class="surface-card rounded-3xl p-6 sm:p-8 block hover:-translate-y-0.5 transition-transform">
+            <h2 class="text-2xl font-semibold text-[var(--text)] mb-2">{guide.title}</h2>
+            <p class="text-[var(--text-muted)]">{guide.desc}</p>
+          </a>
+        ))}
+      </div>
+      <p class="mt-10 text-[var(--text-muted)]">
+        Looking to buy? <a href="/" class="text-[var(--accent)] underline underline-offset-4">Return to LaPlayaEsVida.com for sale</a>.
+      </p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,15 +1,17 @@
 {
   "name": "laplayaesvida-com",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "astro dev --host --port 43123",
+    "start": "astro dev --host --port 43123",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "astro preview --host --port 43123",
     "astro": "astro",
-    "deploy": "wrangler deploy"
+    "check": "astro check",
+    "deploy": "npm run build && wrangler deploy",
+    "cf:dev": "npm run build && wrangler dev --port 43123"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",

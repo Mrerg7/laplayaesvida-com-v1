@@ -1,26 +1,26 @@
 ---
-import { ACQUISITION_MAILTO } from '../config/site';
+import {
+  BUY_NOW_MAILTO,
+  MAKE_OFFER_MAILTO,
+  CONTACT_AGENT_MAILTO,
+} from '../config/site';
 ---
 
-<section class="bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800 py-20">
+<section class="bg-[var(--bg-soft)] border-t border-[var(--border-strong)] py-20">
   <div class="max-w-3xl mx-auto px-6 text-center">
-    <h2 class="text-4xl sm:text-5xl heading-serif tracking-tighter mb-4 text-white">
+    <h2 class="text-4xl sm:text-5xl heading-serif tracking-tighter mb-4 text-[var(--text)]">
       Ready to own<br />The Beach Is Life?
     </h2>
-    <p class="text-white/70 mb-8">
-      This premium domain is available for serious acquisition. Inquiries from visionary brands and qualified buyers are welcome.
+    <p class="text-[var(--text-muted)] mb-8 text-base sm:text-lg">
+      This premium domain is available for serious acquisition. Choose Buy Now at list price, Make Offer, or Contact Agent for a private discussion.
     </p>
 
-    <a
-      href={ACQUISITION_MAILTO}
-      class="group inline-flex items-center justify-center gap-3 px-14 py-5 bg-white hover:bg-amber-50 text-xl font-semibold text-slate-950 rounded-3xl transition-all shadow-2xl conversion-cta"
-    >
-      <span>Start the Conversation</span>
-      <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </a>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href={BUY_NOW_MAILTO} class="btn-primary text-lg px-10" data-cta="cta-buy-now">Buy Now</a>
+      <a href={MAKE_OFFER_MAILTO} class="btn-accent text-lg px-10" data-cta="cta-make-offer">Make Offer</a>
+      <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)] px-8 text-lg" data-cta="cta-contact">Contact Agent</a>
+    </div>
 
-    <p class="text-xs text-white/40 mt-6">Confidential &bull; Escrow Protected &bull; Premium Acquisition</p>
+    <p class="text-xs text-[var(--text-faint)] mt-6">Confidential · Escrow Protected · Premium Acquisition</p>
   </div>
 </section>

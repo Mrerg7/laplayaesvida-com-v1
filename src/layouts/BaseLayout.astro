@@ -1,7 +1,13 @@
 ---
 import '../styles/global.css';
-import { SITE, OG_IMAGE, PRODUCT_OFFER } from '../config/site';
+import {
+  SITE,
+  OG_IMAGE,
+  PRODUCT_OFFER,
+  formattedPrice,
+} from '../config/site';
 import { getAggregateRating, getProductReviews } from '../data/testimonials';
+import { getFAQPageSchema } from '../data/faqs';
 
 export interface Props {
   title?: string;
@@ -23,20 +29,40 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
     {
+      '@type': 'Organization',
+      '@id': `${SITE.url}/#organization`,
+      name: SITE.brand,
+      url: SITE.url,
+      email: SITE.email,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE.url}/favicon.svg`,
+      },
+      sameAs: [],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        email: SITE.email,
+        availableLanguage: ['English', 'Spanish'],
+      },
+    },
+    {
       '@type': 'WebSite',
       '@id': `${SITE.url}/#website`,
       url: SITE.url,
       name: SITE.name,
       description,
       inLanguage: 'en-US',
+      publisher: { '@id': `${SITE.url}/#organization` },
     },
     {
       '@type': 'WebPage',
       '@id': `${canonicalURL}#webpage`,
-      url: canonicalURL,
+      url: canonicalURL.toString(),
       name: title,
       description,
       isPartOf: { '@id': `${SITE.url}/#website` },
+      about: { '@id': `${SITE.url}/#product` },
       inLanguage: 'en-US',
       primaryImageOfPage: {
         '@type': 'ImageObject',
@@ -45,12 +71,15 @@ const structuredData = {
     },
     {
       '@type': 'Product',
+      '@id': `${SITE.url}/#product`,
       name: `${SITE.name} — Premium Domain Name`,
       description:
-        'The authoritative .com domain for "The Beach Is Life" — a culturally powerful Spanish lifestyle phrase with global reach across Latin America, Spain, and the U.S. Hispanic market.',
+        'The authoritative .com domain for "The Beach Is Life" — a culturally powerful Spanish lifestyle phrase with global reach across Latin America, Spain, and the U.S. Hispanic market. Available for acquisition.',
       url: SITE.url,
       image,
       category: 'Domain Name',
+      sku: SITE.domain,
+      mpn: SITE.domain,
       brand: {
         '@type': 'Brand',
         name: SITE.name,
@@ -59,35 +88,45 @@ const structuredData = {
       aggregateRating: getAggregateRating(),
       offers: {
         '@type': 'Offer',
-        url: canonicalURL,
+        url: SITE.url,
         availability: 'https://schema.org/InStock',
         price: PRODUCT_OFFER.price,
         priceCurrency: PRODUCT_OFFER.priceCurrency,
-        seller: {
-          '@type': 'Organization',
-          name: 'Desert Rich',
-          email: SITE.email,
-        },
+        priceValidUntil: '2027-12-31',
+        itemCondition: 'https://schema.org/NewCondition',
+        seller: { '@id': `${SITE.url}/#organization` },
       },
     },
+    getFAQPageSchema(SITE.url),
   ],
 };
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <meta
+    name="keywords"
+    content="buy .com domains, domain marketplace, LaPlayaEsVida.com for sale, premium domain names, investment domains, Spanish domain, beach lifestyle domain, buy LaPlayaEsVida.com"
+  />
+  <meta name="author" content={SITE.brand} />
+  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f4f7fb" media="(prefers-color-scheme: light)" />
 
   <meta name="google-site-verification" content={SITE.googleSiteVerification} />
 
   <link rel="canonical" href={canonicalURL} />
-  {noindex && <meta name="robots" content="noindex" />}
+  {noindex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  )}
 
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="product" />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -96,20 +135,43 @@ const structuredData = {
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content={SITE.name} />
   <meta property="og:locale" content={SITE.locale} />
+  <meta property="product:price:amount" content={String(PRODUCT_OFFER.price)} />
+  <meta property="product:price:currency" content={PRODUCT_OFFER.priceCurrency} />
+  <meta property="product:availability" content="in stock" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={image} />
 
+  <link rel="preload" as="image" href="/images/hero.webp" type="image/webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <script is:inline>
+    (function () {
+      try {
+        var stored = localStorage.getItem('lp-theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
-<body>
+<body class="theme-body">
+  <a class="skip-link" href="#main">Skip to content</a>
   <slot />
+  <script is:inline define:vars={{ listedPrice: formattedPrice }}>
+    window.__LP_PRICE__ = listedPrice;
+  </script>
 </body>
 </html>

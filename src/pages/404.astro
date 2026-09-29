@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Page Not Found | LaPlayaEsVida.com"
+  description="This page does not exist. Return to the LaPlayaEsVida.com premium domain listing."
+  noindex={true}
+>
+  <Header />
+  <main id="main" class="pt-32 pb-24 px-6 text-center">
+    <p class="section-kicker mb-3">404</p>
+    <h1 class="heading-serif text-5xl text-[var(--text)] mb-4">Page not found</h1>
+    <p class="text-[var(--text-muted)] mb-8">The page you requested is not available.</p>
+    <a href="/" class="btn-primary inline-flex">Back to LaPlayaEsVida.com</a>
+  </main>
+  <Footer />
+</BaseLayout>

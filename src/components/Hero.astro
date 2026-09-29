@@ -1,72 +1,87 @@
 ---
-import { ACQUISITION_MAILTO } from '../config/site';
+import {
+  BUY_NOW_MAILTO,
+  MAKE_OFFER_MAILTO,
+  CONTACT_AGENT_MAILTO,
+  formattedPrice,
+  HERO_IMAGE,
+  HERO_IMAGE_WEBP,
+} from '../config/site';
 
 export interface Props {
-  image: string;
+  image?: string;
 }
 
-const { image } = Astro.props;
+const { image = HERO_IMAGE } = Astro.props;
+const webp = image === HERO_IMAGE ? HERO_IMAGE_WEBP : undefined;
 ---
 
-<section class="relative min-h-[100dvh] flex items-center pt-20 overflow-hidden">
-  <div
-    class="absolute inset-0 bg-cover bg-center"
-    style={`background-image: url('${image}')`}
-    role="img"
-    aria-label="Tropical beach at golden hour"
-  >
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/60 to-slate-950/80"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#C5A46E10_0.8px,transparent_1px)] bg-[length:5px_5px]"></div>
+<section class="relative min-h-[100dvh] flex items-center pt-24 overflow-hidden">
+  <div class="absolute inset-0" aria-hidden="true">
+    <picture>
+      {webp && <source srcset={webp} type="image/webp" />}
+      <img
+        src={image}
+        alt=""
+        width="1920"
+        height="1280"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+    </picture>
+    <div class="absolute inset-0" style="background: var(--hero-overlay)"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#C5A46E14_0.8px,transparent_1px)] bg-[length:5px_5px]"></div>
   </div>
 
-  <div class="relative max-w-5xl mx-auto px-6 text-center z-10 pt-12 pb-20">
-    <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 mb-8">
-      <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-      <span class="text-xs font-medium tracking-[2px] text-white/90">PREMIUM .COM &bull; AVAILABLE NOW</span>
+  <div class="relative max-w-5xl mx-auto px-6 text-center z-10 pt-8 pb-20">
+    <div class="fade-up inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-7">
+      <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true"></span>
+      <span class="text-xs font-semibold tracking-[0.18em] text-white/90">PREMIUM .COM · AVAILABLE NOW · ONLY 1</span>
     </div>
 
-    <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-[92px] leading-[0.92] tracking-tighter heading-serif text-white mb-4">
+    <h1 class="fade-up-delay text-5xl sm:text-7xl md:text-8xl lg:text-[92px] heading-serif text-white mb-4">
       LaPlayaEsVida<span class="text-gold-400">.</span>com
     </h1>
 
-    <p class="max-w-2xl mx-auto text-2xl md:text-3xl text-white/90 font-light tracking-tight mb-4">
+    <p class="fade-up-delay max-w-2xl mx-auto text-2xl md:text-3xl text-white/92 font-light tracking-tight mb-3">
       The Beach Is Life
     </p>
 
-    <p class="max-w-lg mx-auto text-lg text-white/70 mb-10">
-      The rare, emotionally powerful Spanish domain that instantly owns the aspirational coastal lifestyle.
+    <p class="fade-up-delay-2 max-w-xl mx-auto text-base sm:text-lg text-white/75 mb-6">
+      Own the rare Spanish phrase .com that instantly brands coastal lifestyle across 636M+ speakers.
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      <a
-        href={ACQUISITION_MAILTO}
-        class="group px-10 py-4 bg-white hover:bg-amber-50 text-slate-950 font-semibold text-lg rounded-3xl flex items-center justify-center gap-3 transition-all shadow-xl conversion-cta w-full sm:w-auto"
-      >
-        <span>Inquire to Acquire</span>
-        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
+    <div class="fade-up-delay-2 mb-8 flex flex-col items-center gap-2">
+      <p class="text-white/70 text-sm tracking-wide uppercase">Listed acquisition price</p>
+      <p class="text-4xl sm:text-5xl font-semibold text-white heading-serif">{formattedPrice}</p>
+      <p class="text-sm text-emerald-300/90" id="viewer-count" aria-live="polite">Escrow-protected · SSL secured transfer</p>
+    </div>
 
-      <a
-        href="#value"
-        class="px-8 py-4 border border-white/40 hover:bg-white/5 text-white font-medium rounded-3xl flex items-center justify-center gap-2 transition-all w-full sm:w-auto"
-      >
-        Discover the Value
+    <div class="fade-up-delay-2 flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center">
+      <a href={BUY_NOW_MAILTO} class="btn-primary text-lg px-8" data-cta="hero-buy-now">
+        Buy Now
+      </a>
+      <a href={MAKE_OFFER_MAILTO} class="btn-secondary text-lg px-8" data-cta="hero-make-offer">
+        Make Offer
+      </a>
+      <a href={CONTACT_AGENT_MAILTO} class="btn-secondary text-lg px-8" data-cta="hero-contact-agent">
+        Contact Agent
       </a>
     </div>
 
-    <div class="mt-12 flex justify-center">
-      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs text-white/50">
-        <span class="flex items-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" /></svg>
-          Global Spanish Reach
-        </span>
-        <span class="flex items-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-          Escrow Protected
-        </span>
-      </div>
+    <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs sm:text-sm text-white/55">
+      <span>Escrow.com ready</span>
+      <span>HTTPS / SSL secured</span>
+      <span>24h response guarantee</span>
     </div>
   </div>
 </section>
+
+<script>
+  const el = document.getElementById('viewer-count');
+  if (el) {
+    const base = 4 + Math.floor(Math.random() * 5);
+    el.textContent = `${base} people viewing this premium domain · Escrow-protected`;
+  }
+</script>

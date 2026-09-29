@@ -2,23 +2,24 @@
 import { testimonials } from '../data/testimonials';
 ---
 
-<section class="bg-slate-900 py-16 border-y border-slate-800">
+<section class="bg-[var(--bg-soft)] py-16 border-y border-[var(--border-strong)]" aria-labelledby="social-proof-heading">
   <div class="max-w-5xl mx-auto px-6">
     <div class="text-center mb-10">
-      <div class="text-gold-400 text-xs tracking-[3px] font-semibold">WHAT BUYERS &amp; BRAND LEADERS SAY</div>
+      <div class="section-kicker">What buyers &amp; brand leaders say</div>
+      <h2 id="social-proof-heading" class="sr-only">Social proof</h2>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
       {testimonials.map((item) => (
-        <div class="bg-slate-950 border border-slate-700 rounded-3xl p-8">
-          <div class="flex gap-1 text-gold-400 mb-4" aria-label={`${item.stars} out of 5 stars`}>
+        <figure class="surface-card rounded-3xl p-8">
+          <div class="flex gap-1 text-[var(--accent)] mb-4" aria-label={`${item.stars} out of 5 stars`}>
             {Array.from({ length: 5 }).map((_, i) => (
               <span class={i < Math.floor(item.stars) ? '' : i < item.stars ? 'opacity-50' : 'opacity-20'}>★</span>
             ))}
           </div>
-          <p class="italic text-white/90">"{item.quote}"</p>
-          <p class="mt-6 text-sm text-white/60">— {item.author}</p>
-        </div>
+          <blockquote class="italic text-[var(--text)] text-base">“{item.quote}”</blockquote>
+          <figcaption class="mt-6 text-sm text-[var(--text-faint)]">— {item.author}</figcaption>
+        </figure>
       ))}
     </div>
   </div>

@@ -1,30 +1,73 @@
 ---
 const useCases = [
-  { icon: '🏠', title: 'Luxury Real Estate & Developments', desc: 'Beachfront communities, villa collections, or a high-end coastal property portal.' },
-  { icon: '🏨', title: 'Resorts, Hospitality & Retreats', desc: 'Boutique hotels, wellness centers, surf retreats, or luxury villa rentals.' },
-  { icon: '👗', title: 'Lifestyle & Fashion Brands', desc: 'Premium beachwear, resort collections, lifestyle products, or home & living.' },
-  { icon: '✈️', title: 'Travel & Experiential Platforms', desc: 'Curated beach destinations, digital nomad coastal living, or luxury travel clubs.' },
-  { icon: '📰', title: 'Media, Content & Community', desc: 'A leading voice in coastal lifestyle media, podcasts, or membership communities.' },
-  { icon: '📈', title: 'Investment & Brand Holding', desc: 'A scarce digital asset with strong appreciation potential and brand equity.' },
+  { title: 'Luxury real estate & developments', desc: 'Beachfront communities, villa collections, or a high-end coastal property portal.', category: 'Business' },
+  { title: 'Resorts, hospitality & retreats', desc: 'Boutique hotels, wellness centers, surf retreats, or luxury villa rentals.', category: 'Hospitality' },
+  { title: 'Lifestyle & fashion brands', desc: 'Premium beachwear, resort collections, lifestyle products, or home & living.', category: 'Brandable' },
+  { title: 'Travel & experiential platforms', desc: 'Curated beach destinations, digital nomad coastal living, or luxury travel clubs.', category: 'Geo' },
+  { title: 'Media, content & community', desc: 'A leading voice in coastal lifestyle media, podcasts, or membership communities.', category: 'Media' },
+  { title: 'Investment & brand holding', desc: 'A scarce digital asset with strong appreciation potential and brand equity.', category: 'Investment' },
 ];
 ---
 
-<section id="uses" class="bg-slate-900 py-16 border-y border-slate-800">
+<section id="uses" class="bg-[var(--bg-soft)] py-16 border-y border-[var(--border-strong)]">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-12">
-      <div class="text-gold-400 text-xs tracking-[3px] font-semibold mb-2">ENDLESS POSSIBILITIES</div>
-      <h2 class="text-4xl sm:text-5xl heading-serif tracking-tight text-white">Built for Visionary Brands</h2>
-      <p class="mt-3 text-white/70 max-w-md mx-auto">This domain is the perfect foundation for any business or project that celebrates coastal living.</p>
+      <div class="section-kicker mb-2">Endless possibilities</div>
+      <h2 class="text-4xl sm:text-5xl heading-serif tracking-tight text-[var(--text)]">Built for visionary brands</h2>
+      <p class="mt-3 text-[var(--text-muted)] max-w-md mx-auto text-base">This domain is the perfect foundation for any business or project that celebrates coastal living.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="flex flex-wrap justify-center gap-2 mb-8" role="list" aria-label="Use-case categories">
+      {['All', 'Business', 'Hospitality', 'Brandable', 'Geo', 'Media', 'Investment'].map((cat, index) => (
+        <button
+          type="button"
+          class:list={[
+            'use-filter tap-target px-4 rounded-full border text-sm transition-colors',
+            index === 0
+              ? 'border-[var(--accent)] text-[var(--accent)] bg-[var(--accent)]/10'
+              : 'border-[var(--border-strong)] text-[var(--text-muted)]',
+          ]}
+          data-filter={cat.toLowerCase()}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="use-case-grid">
       {useCases.map((item) => (
-        <div class="premium-card group bg-slate-950 border border-slate-700 hover:border-gold-400/30 rounded-3xl p-8">
-          <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 mb-6 text-2xl" aria-hidden="true">{item.icon}</div>
-          <h3 class="font-semibold text-xl mb-2 text-white">{item.title}</h3>
-          <p class="text-sm text-white/70">{item.desc}</p>
-        </div>
+        <article
+          class="use-card surface-card group rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-1"
+          data-category={item.category.toLowerCase()}
+        >
+          <p class="text-xs uppercase tracking-[0.18em] text-[var(--accent)] mb-3">{item.category}</p>
+          <h3 class="font-semibold text-xl mb-2 text-[var(--text)]">{item.title}</h3>
+          <p class="text-base text-[var(--text-muted)]">{item.desc}</p>
+        </article>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.use-filter');
+  const cards = document.querySelectorAll<HTMLElement>('.use-card');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter || 'all';
+      buttons.forEach((b) => {
+        b.classList.remove('border-[var(--accent)]', 'text-[var(--accent)]', 'bg-[var(--accent)]/10');
+        b.classList.add('border-[var(--border-strong)]', 'text-[var(--text-muted)]');
+      });
+      button.classList.add('border-[var(--accent)]', 'text-[var(--accent)]', 'bg-[var(--accent)]/10');
+      button.classList.remove('border-[var(--border-strong)]', 'text-[var(--text-muted)]');
+
+      cards.forEach((card) => {
+        const category = card.dataset.category || '';
+        const show = filter === 'all' || category === filter;
+        card.classList.toggle('hidden', !show);
+      });
+    });
+  });
+</script>

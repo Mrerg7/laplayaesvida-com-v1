@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Playfair Display', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['DM Sans', 'Segoe UI', 'sans-serif'],
       },
       colors: {
         gold: {
@@ -13,6 +13,16 @@ export default {
           400: '#C5A46E',
           500: '#B8944F',
         },
+        tide: {
+          500: '#1F6F8B',
+          700: '#155A72',
+        },
+      },
+      minHeight: {
+        tap: '48px',
+      },
+      minWidth: {
+        tap: '48px',
       },
     },
   },

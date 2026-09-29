@@ -1,33 +1,127 @@
 ---
-import { ACQUISITION_MAILTO } from '../config/site';
+import {
+  ACQUISITION_MAILTO,
+  BUY_NOW_MAILTO,
+  MAKE_OFFER_MAILTO,
+  CONTACT_AGENT_MAILTO,
+  formattedPrice,
+} from '../config/site';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
-  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3 group">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center">
-        <svg class="w-5 h-5 text-slate-950" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3" aria-label="Primary">
+    <a href="/" class="flex items-center gap-3 group min-h-tap">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-300 to-yellow-600 flex items-center justify-center shrink-0">
+        <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3c4 4 6 7.2 6 10a6 6 0 11-12 0c0-2.8 2-6 6-10z" />
         </svg>
       </div>
       <div>
-        <span class="font-semibold text-xl tracking-tighter text-white group-hover:text-gold-400 transition-colors">LaPlayaEsVida</span>
-        <span class="text-xs text-gold-400 font-medium tracking-[3px] block -mt-0.5">.COM</span>
+        <span class="font-semibold text-lg sm:text-xl tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">LaPlayaEsVida</span>
+        <span class="text-[10px] text-[var(--accent)] font-semibold tracking-[0.28em] block -mt-0.5">.COM</span>
       </div>
     </a>
 
-    <div class="hidden md:flex items-center gap-8 text-sm text-slate-300">
-      <a href="#value" class="hover:text-gold-400 transition-colors">Why This Domain</a>
-      <a href="#market" class="hover:text-gold-400 transition-colors">Market</a>
-      <a href="#uses" class="hover:text-gold-400 transition-colors">Perfect For</a>
-      <a href="#process" class="hover:text-gold-400 transition-colors">How It Works</a>
+    <div class="hidden lg:flex items-center gap-7 text-sm text-[var(--text-muted)]">
+      <a href="#value" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">Why This Domain</a>
+      <a href="#market" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">Market</a>
+      <a href="#uses" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">Perfect For</a>
+      <a href="/guides/" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">Guides</a>
+      <a href="#process" class="hover:text-[var(--accent)] transition-colors min-h-tap inline-flex items-center">How It Works</a>
     </div>
 
-    <a
-      href={ACQUISITION_MAILTO}
-      class="px-6 py-2.5 bg-white text-slate-950 font-semibold text-sm rounded-2xl hover:bg-amber-50 transition-all conversion-cta"
-    >
-      Secure This Asset
-    </a>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button
+        type="button"
+        id="theme-toggle"
+        class="tap-target inline-flex items-center justify-center rounded-xl border border-[var(--border-strong)] px-3 text-sm text-[var(--text-muted)] hover:text-[var(--text)]"
+        aria-label="Toggle light and dark mode"
+      >
+        <span class="theme-icon-dark hidden">Dark</span>
+        <span class="theme-icon-light">Light</span>
+      </button>
+
+      <a
+        href={BUY_NOW_MAILTO}
+        class="hidden sm:inline-flex btn-primary text-sm px-5"
+        data-cta="nav-buy-now"
+      >
+        Buy Now · {formattedPrice}
+      </a>
+
+      <button
+        type="button"
+        id="mobile-nav-toggle"
+        class="lg:hidden tap-target inline-flex items-center justify-center rounded-xl border border-[var(--border-strong)] px-3"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open menu"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
   </nav>
+
+  <div id="mobile-nav" class="lg:hidden hidden border-t border-[var(--border-strong)] bg-[var(--bg-elevated)]">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1 text-[var(--text)]">
+      <a href="#value" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">Why This Domain</a>
+      <a href="#market" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">Market</a>
+      <a href="#uses" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">Perfect For</a>
+      <a href="/guides/" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">Guides</a>
+      <a href="#process" class="tap-target flex items-center px-3 rounded-xl hover:bg-[var(--bg-soft)]">How It Works</a>
+      <div class="grid gap-2 pt-3">
+        <a href={BUY_NOW_MAILTO} class="btn-primary" data-cta="mobile-buy-now">Buy Now · {formattedPrice}</a>
+        <a href={MAKE_OFFER_MAILTO} class="btn-accent" data-cta="mobile-make-offer">Make Offer</a>
+        <a href={CONTACT_AGENT_MAILTO} class="tap-target inline-flex items-center justify-center rounded-2xl border border-[var(--border-strong)]" data-cta="mobile-contact">Contact Agent</a>
+        <a href={ACQUISITION_MAILTO} class="text-center text-sm text-[var(--text-muted)] py-2">General inquiry</a>
+      </div>
+    </div>
+  </div>
 </header>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const mobileToggle = document.getElementById('mobile-nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  function syncThemeLabel() {
+    const theme = root.getAttribute('data-theme') || 'dark';
+    const darkLabel = document.querySelector('.theme-icon-dark');
+    const lightLabel = document.querySelector('.theme-icon-light');
+    if (!darkLabel || !lightLabel) return;
+    if (theme === 'dark') {
+      darkLabel.classList.add('hidden');
+      lightLabel.classList.remove('hidden');
+    } else {
+      lightLabel.classList.add('hidden');
+      darkLabel.classList.remove('hidden');
+    }
+  }
+
+  toggle?.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try {
+      localStorage.setItem('lp-theme', next);
+    } catch {}
+    syncThemeLabel();
+  });
+
+  mobileToggle?.addEventListener('click', () => {
+    const open = mobileNav?.classList.toggle('hidden') === false;
+    mobileToggle.setAttribute('aria-expanded', String(open));
+    mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+
+  mobileNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.add('hidden');
+      mobileToggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  syncThemeLabel();
+</script>

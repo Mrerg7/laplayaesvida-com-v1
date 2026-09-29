@@ -15,6 +15,7 @@ import ProcessSection from '../components/ProcessSection.astro';
 import CTASection from '../components/CTASection.astro';
 import FAQSection from '../components/FAQSection.astro';
 import Footer from '../components/Footer.astro';
+import ExitIntent from '../components/ExitIntent.astro';
 
 const siteData = await getEntry('site', 'site');
 const heroImage = siteData?.data?.heroImage ?? HERO_IMAGE;
@@ -22,7 +23,7 @@ const heroImage = siteData?.data?.heroImage ?? HERO_IMAGE;
 
 <BaseLayout>
   <Header />
-  <main>
+  <main id="main">
     <Hero image={heroImage} />
     <TrustBar />
     <MeaningSection />
@@ -36,4 +37,5 @@ const heroImage = siteData?.data?.heroImage ?? HERO_IMAGE;
     <FAQSection />
   </main>
   <Footer />
+  <ExitIntent />
 </BaseLayout>
